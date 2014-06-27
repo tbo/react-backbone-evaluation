@@ -1,0 +1,49 @@
+{
+  "name": "react-quickstart",
+  "version": "0.0.0",
+  "description": "React project",
+  "main": "./server.js",
+  "browser": "./client.js",
+  "browserify": {
+    "transform": [
+      [
+        "reactify",
+        {
+          "harmony": true
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "backbone": "^1.1.2",
+    "backbone-super-sync": "0.0.10",
+    "body-parser": "^1.4.3",
+    "express": "~4.1.1",
+    "fibers": "~1.0.1",
+    "node-jsx": "~0.10.0",
+    "react": "~0.10.0",
+    "react-async": "~0.9.1",
+    "react-events": "^0.4.2",
+    "react-mixin-manager": "^0.5.2",
+    "react-router-component": "~0.18.2",
+    "superagent": "~0.18.0",
+    "underscore": "^1.6.0"
+  },
+  "devDependencies": {
+    "reactify": "~0.13.1",
+    "envify": "~1.2.0",
+    "browserify": "~3.44.2",
+    "connect-browserify": "~2.0.1",
+    "uglify-js": "~2.4.13",
+    "supervisor": "~0.6.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "supervisor -i node_modules -e js,jsx server.js",
+    "build": "NODE_ENV=production browserify ./ | uglifyjs -cm 2>/dev/null > ./assets/bundle.js",
+    "start-prod": "NODE_ENV=production node server.js",
+    "clean": "rm -f ./assets/bundle.js"
+  },
+  "author": "",
+  "license": "MIT"
+}
