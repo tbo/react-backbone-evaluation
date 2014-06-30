@@ -39,6 +39,8 @@ var App = React.createClass({
 module.exports = App;
 
 if (typeof window !== 'undefined') {
+  //Fix for react tools
+  window.React = React;
   window.onload = function() {
     React.renderComponent(App(), document);
   }
