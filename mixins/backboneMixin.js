@@ -18,7 +18,7 @@ module.exports = {
     },
 
     componentDidMount: function() {
-        this.state.model.on('add', this.deferUpdate)
+        this.state.model.on('change', this.deferUpdate)
     },
 
     deferUpdate: function() {

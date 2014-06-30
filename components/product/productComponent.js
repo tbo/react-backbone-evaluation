@@ -22,14 +22,28 @@ module.exports = React.createClass({
         this.trigger('basket:add', this.state.model);
     },
 
+    getProductTitle: function() {
+        return (<h1>{this.state.model.get('name')}</h1>);
+    },
+
+    getProductImage: function() {
+        return (<img src={this.state.model.get('images')[0].url} className="product-image"/>);
+    },
+
+    getOrderButton: function() {
+        return (
+            <div className="add-to-basket">
+                <span onClick={this.addToBasket}>Add to Basket</span>
+            </div>
+        );
+    },
+
     render: function () {
         return (
             <div className="product-page">
-                <h1>{this.state.model.get('name')}</h1>
-                <img src={this.state.model.get('images')[0].url} className="product-image"/>
-                <div className="add-to-basket">
-                    <span onClick={this.addToBasket}>Add to Basket</span>
-                </div>
+                {this.getProductTitle()}
+                {this.getProductImage()}
+                {this.getOrderButton()}
                 <SizeFacet facet={this.state.model.get('facetGroups')[0]}/>
                 <div className="clearfix"/>
                 <CommentListing comments={this.state.model.get('comments')}/>
